@@ -17,13 +17,13 @@
             {{ item[key] }}
           </td>
           <td
-            v-for="({ className, emit, keyItem, label },
+            v-for="({ className, emit, actionKey, label },
             actionIndex) in actions"
             :key="`action-${actionIndex}`"
           >
             <button
               :class="className"
-              @click="$emit(emit, { id: item[keyItem] })"
+              @click="$emit(emit, { id: item[actionKey] })"
             >
               {{ label }}
             </button>
