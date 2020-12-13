@@ -43,7 +43,7 @@ export default {
     ...mapGetters({
       item: `${config.crudName}/item`,
       error: `${config.crudName}/itemError`,
-      categories: 'categories/items',
+      products: 'products/items',
     }),
     isUpdating: ({
       $route: {
@@ -57,8 +57,8 @@ export default {
     config,
   }),
   async mounted() {
-    await this.fetchCategories()
-    this.setFields({ fieldKey: 'category', values: this.categories })
+    await this.fetchProducts()
+    this.setFields({ fieldKey: 'products', values: this.products })
 
     if (this.isUpdating) {
       await this.fetchItem(this.$route.params.id)
@@ -78,7 +78,7 @@ export default {
       updateItem: `${config.crudName}/update`,
 
       // bl
-      fetchCategories: 'categories/fetchAll',
+      fetchProducts: 'products/fetchAll',
     }),
     setModel() {
       this.model = {
@@ -88,7 +88,7 @@ export default {
     async onItemUpdate() {
       const updatedModel = {
         ...this.model,
-        category: this.model.category.id,
+        products: this.model.products.map((product) => product._id),
       }
       await this.updateItem({
         id: this.$route.params.id,

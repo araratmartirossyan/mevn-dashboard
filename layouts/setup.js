@@ -11,6 +11,10 @@ const menu = [
     name: 'Товары',
     to: '/products',
   },
+  {
+    name: 'Заказы',
+    to: '/orders',
+  },
 ]
 
 export default menu
