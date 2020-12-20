@@ -5,7 +5,10 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Home',
+  middleware: 'auth',
+}
 </script>
 
 <style></style>

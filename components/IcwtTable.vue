@@ -2,11 +2,13 @@
   <table class="table">
     <thead>
       <slot name="columns">
-        <th>#</th>
-        <th v-for="({ name }, index) in columns" :key="index">
-          {{ name }}
-        </th>
-        <th v-if="actions.length !== 0">Действия</th>
+        <tr>
+          <th>#</th>
+          <th v-for="({ name }, index) in columns" :key="index">
+            {{ name }}
+          </th>
+          <th v-if="actions.length !== 0">Действия</th>
+        </tr>
       </slot>
     </thead>
     <tbody>
