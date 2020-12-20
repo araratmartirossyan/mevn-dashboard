@@ -1,3 +1,12 @@
+export const config = {
+  name: 'Продукты',
+  crudName: 'products',
+  singleName: 'Продукт',
+  pageName: 'ProductPage',
+  formName: 'ProductForm',
+  formTitle: 'Форма Продукта',
+}
+
 export const columns = [
   { key: 'title', name: 'Название продукта' },
   { key: 'amount', name: 'Доступное Кол-во' },
