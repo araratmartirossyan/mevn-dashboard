@@ -24,6 +24,7 @@ import { columns, actions, config } from './setup'
 
 export default {
   name: config.pageName,
+  middleware: 'auth',
   components: {
     IcwtTable: () => import('@/components/IcwtTable'),
     Card: () => import('@/components/Card'),

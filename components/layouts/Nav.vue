@@ -3,6 +3,7 @@
     <NavItem v-for="(item, key) in menu" :to="item.to" :key="key">
       {{ item.name }}
     </NavItem>
+    <button class="btn btn-danger" @click="$emit('onLogout')">Выйти</button>
   </nav>
 </template>
 

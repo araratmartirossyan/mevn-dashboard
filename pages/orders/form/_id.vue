@@ -27,6 +27,7 @@ import { schema } from './fields'
 
 export default {
   name: 'ProductForm',
+  middleware: 'auth',
   components: {
     CrudForm: () => import('@/components/CrudForm'),
     Card: () => import('@/components/Card'),

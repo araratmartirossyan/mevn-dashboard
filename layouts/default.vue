@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <icwt-nav :menu="menu" />
+    <icwt-nav :menu="menu" @onLogout="handleLogout" />
     <div class="content">
       <main>
         <Nuxt />
@@ -21,6 +21,12 @@ export default {
   components: {
     IcwtFooter: () => import('@/components/layouts/Footer'),
     IcwtNav: () => import('@/components/layouts/Nav'),
+  },
+  methods: {
+    async handleLogout() {
+      localStorage.clear()
+      this.$router.push('/login')
+    },
   },
 }
 </script>

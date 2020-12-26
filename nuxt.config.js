@@ -14,7 +14,11 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/axiosport.js', '~/plugins/formGenerator.js'],
+  plugins: [
+    '~/plugins/axiosport.js',
+    '~/plugins/formGenerator.js',
+    '~/plugins/vee-validate.js',
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -52,13 +56,14 @@ export default {
           maxAge: 60 * 60 * 24 * 30,
         },
         endpoints: {
+          user: false,
           login: {
-            url: 'api/v1/login',
+            url: '/auth/login',
             method: 'post',
             propertyName: 'accessToken',
           },
           logout: {
-            url: 'api/v1/logout',
+            url: '/auth/logout',
             method: 'post',
           },
         },
@@ -67,5 +72,7 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    transpile: ['vee-validate/dist/rules'],
+  },
 }
