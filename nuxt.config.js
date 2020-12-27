@@ -1,4 +1,8 @@
 export default {
+  server: {
+    port: process.env.PORT,
+    hos: process.env.HOST,
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'mevn-dashboard',
