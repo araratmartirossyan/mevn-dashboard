@@ -1,7 +1,11 @@
 export default {
+  server: {
+    port: process.env.PORT, // default: 3000
+    host: process.env.HOST, // default: localhost
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'mevn-dashboard',
+    title: 'Mevn Dashboard',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -24,7 +28,6 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-  buildModules: [],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
@@ -33,7 +36,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://auth.nuxtjs.org
-    '@nuxtjs/auth',
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -57,6 +60,10 @@ export default {
         },
         endpoints: {
           user: false,
+          refresh: {
+            url: '/auth/refresh',
+            method: 'post',
+          },
           login: {
             url: '/auth/login',
             method: 'post',
