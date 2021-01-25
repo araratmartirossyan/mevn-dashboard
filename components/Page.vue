@@ -1,11 +1,20 @@
 <template>
-  <div class="page">
+  <div class="container mx-auto px-6 py-8">
+    <h3 class="text-gray-700 text-2xl font-medium">
+      {{ title }}
+    </h3>
     <slot />
   </div>
 </template>
 
-<style scoped>
-.page {
-  padding: 30px;
+<script>
+export default {
+  name: 'Page',
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+  },
 }
-</style>
+</script>

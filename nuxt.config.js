@@ -39,6 +39,8 @@ export default {
     '@nuxtjs/auth-next',
   ],
 
+  buildModules: ['@nuxtjs/tailwindcss'],
+
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     baseURL: process.env.NUXT_APP_BASE_URL,

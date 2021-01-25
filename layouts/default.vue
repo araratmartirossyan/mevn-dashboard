@@ -1,11 +1,12 @@
 <template>
-  <div class="app">
-    <icwt-nav :menu="menu" @onLogout="handleLogout" />
-    <div class="content">
-      <main>
+  <div class="flex h-screen bg-gray-200">
+    <icwt-nav :menu="menu" />
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <icwt-header @onLogout="handleLogout" />
+      <main class="flex-1 overflow-x-hidden overlow-y-auto bg-gray-200">
         <Nuxt />
       </main>
-      <icwt-footer />
+      <!-- <icwt-footer /> -->
     </div>
   </div>
 </template>
@@ -20,7 +21,8 @@ export default {
   }),
   components: {
     IcwtFooter: () => import('@/components/layouts/Footer'),
-    IcwtNav: () => import('@/components/layouts/Nav'),
+    IcwtHeader: () => import('@/components/layouts/Header'),
+    IcwtNav: () => import('@/components/layouts/Navigation/Nav'),
   },
   methods: {
     async handleLogout() {
@@ -30,24 +32,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-@import '@/assets/styles/global.scss';
-.app {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 85vw;
-}
-main {
-  height: 95%;
-  background: $main-bg;
-}
-</style>
