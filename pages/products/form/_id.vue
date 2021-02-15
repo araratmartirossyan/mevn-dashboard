@@ -1,23 +1,18 @@
 <template>
-  <Page>
-    <div class="row">
-      <div class="col-md-9">
-        <card>
-          <CrudForm
-            v-if="model"
-            :form-schema="schema"
-            :form-model="model"
-            :title="config.formTitle"
-            @on-submit="onFormSubmit"
-          />
-          <p class="text-danger">
-            {{ error }}
-          </p>
-        </card>
-      </div>
-      <div class="col-md-3"></div>
-    </div>
-  </Page>
+  <form-page-wrapper
+    :title="config.formTitle"
+    :description="config.formDescription"
+  >
+    <crud-form
+      v-if="model"
+      :form-schema="schema"
+      :form-model="model"
+      @on-submit="onFormSubmit"
+    />
+    <p class="text-danger">
+      {{ error }}
+    </p>
+  </form-page-wrapper>
 </template>
 
 <script>
@@ -39,6 +34,7 @@ export default {
     CrudForm: () => import('@/components/CrudForm'),
     Card: () => import('@/components/Card'),
     Page: () => import('@/components/Page'),
+    FormPageWrapper: () => import('@/components/FormPageWrapper'),
   },
   computed: {
     ...mapGetters({

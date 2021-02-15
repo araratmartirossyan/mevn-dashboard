@@ -5,6 +5,7 @@ export const config = {
   pageName: 'ProductPage',
   formName: 'ProductForm',
   formTitle: 'Форма Продукта',
+  formDescription: 'Укажите все необходимое для вашего продукта',
 }
 
 export const columns = [
@@ -15,15 +16,17 @@ export const columns = [
 
 export const actions = [
   {
-    className: 'btn btn-warning text-white',
+    bg: 'yellow',
+    color: 'white',
     label: 'Изменить',
     emit: 'onEdit',
     actionKey: '_id',
   },
   {
-    className: 'btn btn-danger text-white',
-    label: 'X',
+    bg: 'red',
+    color: 'white',
     emit: 'onDelete',
     actionKey: '_id',
+    icon: 'icwt-delete',
   },
 ]

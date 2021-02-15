@@ -3,7 +3,9 @@
     <h3 class="text-gray-700 text-2xl font-medium">
       {{ title }}
     </h3>
-    <slot />
+    <div class="my-6">
+      <slot />
+    </div>
   </div>
 </template>
 

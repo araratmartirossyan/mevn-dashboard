@@ -1,10 +1,16 @@
 <template>
-  <Page>
-    <h2>{{ config.name }}</h2>
-    <card>
-      <nuxt-link class="btn btn-success" :to="`${config.crudName}/form`"
-        >Добавить {{ config.singleName }}</nuxt-link
+  <Page :title="config.name">
+    <div class="flex">
+      <icwt-button
+        tag="nuxt-link"
+        icon="icwt-plus"
+        :to="`${config.crudName}/form`"
+        rounded
       >
+        Добавить {{ config.singleName }}
+      </icwt-button>
+    </div>
+    <TablePageWrapper>
       <icwt-table
         :columns="columns"
         :actions="actions"
@@ -12,27 +18,25 @@
         @onEdit="handleEdit"
         @onDelete="handleDelete"
       />
-    </card>
+    </TablePageWrapper>
   </Page>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
-
 // setup
 import { columns, actions, config } from './setup'
 
+// Mixins
+import { crudMixin } from '@/mixins/crud.mixin'
+
 export default {
   name: config.pageName,
+  middleware: 'auth',
+  mixins: [crudMixin({ config })],
   components: {
-    IcwtTable: () => import('@/components/IcwtTable'),
-    Card: () => import('@/components/Card'),
     Page: () => import('@/components/Page'),
-  },
-  computed: {
-    ...mapGetters({
-      items: `${config.crudName}/items`,
-    }),
+    Icon: () => import('@/components/icon/Icon'),
+    IcwtButton: () => import('@/components/Button'),
   },
   data: () => ({
     columns,
@@ -40,16 +44,8 @@ export default {
     config,
   }),
   methods: {
-    ...mapActions({
-      fetchItems: `${config.crudName}/fetchAll`,
-      deleteItem: `${config.crudName}/delete`,
-    }),
     handleEdit({ id }) {
       this.$router.push(`/${config.crudName}/form/${id}`)
-    },
-    async handleDelete({ id }) {
-      await this.deleteItem(id)
-      this.fetchItems()
     },
   },
   mounted() {

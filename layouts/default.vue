@@ -8,6 +8,7 @@
       </main>
       <!-- <icwt-footer /> -->
     </div>
+    <icon-registry />
   </div>
 </template>
 
@@ -23,6 +24,7 @@ export default {
     IcwtFooter: () => import('@/components/layouts/Footer'),
     IcwtHeader: () => import('@/components/layouts/Header'),
     IcwtNav: () => import('@/components/layouts/Navigation/Nav'),
+    IconRegistry: () => import('@/components/icon/icon-registry'),
   },
   methods: {
     async handleLogout() {

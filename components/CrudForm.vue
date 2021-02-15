@@ -1,6 +1,5 @@
 <template>
-  <div class="panel-body">
-    <h2>{{ title }}</h2>
+  <div class="p-6 shadow-xl max-w bg-white rounded-lg">
     <form @submit.prevent="validate">
       <vue-form-generator
         :schema="formSchema"
@@ -9,10 +8,9 @@
         ref="form"
         @model-updated="onUpdate"
       />
-      <hr />
 
-      <div class="text-center">
-        <button class="btn btn-success" type="submit">Подтвердить</button>
+      <div class="max-w flex justify-center">
+        <icwt-button rounded type="submit">Подтвердить</icwt-button>
       </div>
     </form>
   </div>
@@ -21,6 +19,9 @@
 <script>
 export default {
   name: 'CrudForm',
+  components: {
+    IcwtButton: () => import('@/components/Button'),
+  },
   props: {
     formSchema: {
       type: Object,
